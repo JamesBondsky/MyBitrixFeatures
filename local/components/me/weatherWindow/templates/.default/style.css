@@ -1,0 +1,178 @@
+.weatherWindow {
+    position: fixed;
+    top: 5%;
+    /*left: 77.8%;*/
+	right: 0;
+    width: 27%;
+    /*padding: 15px;*/
+    /*padding-right: 0.8%;*/
+    z-index: 99999;
+    /*min-width: 230px;*/
+    max-width: 400px;
+    /*max-height: 100%;*/
+}
+@media (max-width:1385px) {
+        .weatherWindow {
+			width: 30%;
+		}
+      }
+
+@media (max-width:1285px) {
+        .weatherWindow {
+			width: 33%;
+		}
+      }
+
+@media (max-width:1100px) {
+        .weatherWindow {
+			width: 35%;
+		}
+      }
+
+@media (max-width:1000px) {
+        .weatherWindow {
+			width: 39%;
+		}
+      }
+
+@media (max-width:900px) {
+        .weatherWindow {
+			width: 44%;
+		}
+      }
+
+@media (max-width:800px) {
+        .weatherWindow {
+			width: 52%;
+		}
+      }
+
+@media (max-width:700px) {
+        .weatherWindow {
+			width: 59%;
+		}
+      }
+
+@media (max-width:600px) {
+        .weatherWindow {
+			width: 71%;
+		}
+      }
+
+@media (max-width:500px) {
+        .weatherWindow {
+			width: 90%;
+		}
+      }
+
+@media (max-width:400px) {
+        .weatherWindow {
+			width: 100%;
+		}
+      }
+
+.weatherClose {
+    position: fixed;
+    top: 20%;
+    /*left: 93%;*/
+	right: -35px;
+    /*width: 7%;*/
+    /*padding: 15px;*/
+    z-index: 99999;
+	transform: rotateZ(-90deg);
+}
+
+.cityTitle {
+    padding-top: 15px;
+    line-height: 30px;
+    font-size: 1.55em;
+    color: #555;
+}
+
+.cityInfo {
+    /*float: left;*/
+    width: 70%;
+    display: inline-block;
+}
+
+.gisMeteo {
+    float: right;
+    display: inline-block;
+    width: 30%;
+    text-align: right;
+    margin-top: 15px;
+}
+
+.temperature {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1.4em;
+    color: #555;
+}
+
+.detail {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.weather p {
+    margin-bottom: 4px;
+}
+
+.form-body2 {
+    /*padding: 12px 28px 18px;*/
+    padding: 5px 20px 10px;
+    background: #fff;
+    border: 2px solid #2171ac;
+}
+
+.btn-lg2 {
+    font-weight: bold;
+}
+
+.btn2 {
+    font-size: 1em;
+    font-weight: normal;
+    text-transform: none;
+    text-decoration: none;
+    /* margin: 0 10px 10px 0; */
+    /*background-color: #2171ac;*/
+    background-color: #2682C6;
+    border: #2171ac 1px solid;
+    color: #ffffff;
+    border-radius: 2px;
+    padding: 3px 10px 3px;
+    overflow: hidden;
+    transition: background-color 0.1s ease;
+    -moz-transition: background-color 0.1s ease;
+    -ms-transition: background-color 0.1s ease;
+    -o-transition: background-color 0.1s ease;
+    -webkit-transition: background-color 0.1s ease;
+}
+
+.btn2:hover {
+    background-color: #2788ce;
+    border: #2171ac 1px solid;
+    color: #ffffff;
+}
+
+.my-order-block {
+    background: #fbfbfb;
+    border: 1px solid #f2f2f2;
+    color: #555;
+    clear: both;
+    font-size: 1em;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.my-order-block .text {
+    padding: 10px 0px 10px 0px;
+    /*min-height: 46px;*/
+    line-height: 24px;
+    color: #555;
+    text-align: left;
+    position: relative;
+    overflow: auto;
+    vertical-align: middle;
+}
