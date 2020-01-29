@@ -9,7 +9,7 @@
 							}
 						}
 					}
-                    $listPosads = getListOfElementsWithPropertiesAsArray(IBLOCK_ID_POSAD);
+                    $listPosads = getListOfElementsWithPropertiesAsArray(IBLOCK_ID_POSAD, array('!'.'PROPERTY_HIDE_DETAIL_VALUE' => 'Да'));
                     $newListPosads = array();
                     $ii = 0;
                     foreach ($listPosads as $posad) {
