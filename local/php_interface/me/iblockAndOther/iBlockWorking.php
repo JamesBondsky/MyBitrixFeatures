@@ -103,6 +103,7 @@ function getListOfElementsWithPropertiesAsArray($ibID, $propsList = false, $prop
             foreach ($propertiesOfElement as $propName => $propertyFields) {
                 foreach ($propsNeedFields as $propNeedNameField) {
                     $resArray[$elementID]['PROPS'][$propName][$propNeedNameField] = $propertyFields[$propNeedNameField];
+					$resArray[$elementID]['PROPS'][$propName]['~'.$propNeedNameField] = $propertyFields['~'.$propNeedNameField];
                 }
             }
         }
