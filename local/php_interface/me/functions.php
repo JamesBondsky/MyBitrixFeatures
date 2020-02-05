@@ -57,16 +57,21 @@ if (!function_exists('ulogging')) {
 		return true;
 	}
 }
-
-function deleteParamFromURL($url, $parName) {
-    preg_match('/(.*)[?]?'.$parName.'=[0-9]*[&]?(.*)/', $url, $res);
-    $resUrl = $res[1].$res[2];
-    if(substr($resUrl, strlen($resUrl) - 5, 5) == '&amp;')
-        $resUrl = substr($resUrl, 0, strlen($resUrl) - 5);
-    return $resUrl;
+if (!function_exists('deleteParamFromURL')) {
+    function deleteParamFromURL($url, $parName)
+    {
+        preg_match('/(.*)[?]?' . $parName . '=[0-9]*[&]?(.*)/', $url, $res);
+        $resUrl = $res[1] . $res[2];
+        if (substr($resUrl, strlen($resUrl) - 5, 5) == '&amp;')
+            $resUrl = substr($resUrl, 0, strlen($resUrl) - 5);
+        return $resUrl;
+    }
 }
 
-function getPageParam($paramName) {
-    $val = \Bitrix\Main\Context::getCurrent()->getRequest()->get($paramName);
-    return $val;
+if (!function_exists('getPageParam')) {
+    function getPageParam($paramName)
+    {
+        $val = \Bitrix\Main\Context::getCurrent()->getRequest()->get($paramName);
+        return $val;
+    }
 }
