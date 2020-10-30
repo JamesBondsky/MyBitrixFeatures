@@ -1,0 +1,67 @@
+<?$APPLICATION->IncludeComponent("bitrix:catalog.top", "goods_slider_wide", Array(
+    "ACTION_VARIABLE" => "action",	// Название переменной, в которой передается действие
+    "ADD_PICT_PROP" => "-",
+    "ADD_PROPERTIES_TO_BASKET" => "Y",	// Добавлять в корзину свойства товаров и предложений
+    "ADD_TO_BASKET_ACTION" => "ADD",
+    "BASKET_URL" => "/personal/basket.php",	// URL, ведущий на страницу с корзиной покупателя
+    "CACHE_FILTER" => "N",	// Кешировать при установленном фильтре
+    "CACHE_GROUPS" => "Y",	// Учитывать права доступа
+    "CACHE_TIME" => "36000000",	// Время кеширования (сек.)
+    "CACHE_TYPE" => "A",	// Тип кеширования
+    "COMPARE_NAME" => "CATALOG_COMPARE_LIST",
+    "COMPATIBLE_MODE" => "Y",	// Включить режим совместимости
+    "CONVERT_CURRENCY" => "N",	// Показывать цены в одной валюте
+    "CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[{\"CLASS_ID\":\"CondIBProp:6:33\",\"DATA\":{\"logic\":\"Equal\",\"value\":26}}]}",	// Фильтр товаров
+    "DETAIL_URL" => "",	// URL, ведущий на страницу с содержимым элемента раздела
+    "DISPLAY_COMPARE" => "N",	// Разрешить сравнение товаров
+    "ELEMENT_COUNT" => "9",	// Количество выводимых элементов
+    "ELEMENT_SORT_FIELD" => "sort",	// По какому полю сортируем элементы
+    "ELEMENT_SORT_FIELD2" => "id",	// Поле для второй сортировки элементов
+    "ELEMENT_SORT_ORDER" => "asc",	// Порядок сортировки элементов
+    "ELEMENT_SORT_ORDER2" => "desc",	// Порядок второй сортировки элементов
+    "ENLARGE_PRODUCT" => "STRICT",
+    "FILTER_NAME" => "",	// Имя массива со значениями фильтра для фильтрации элементов
+    "HIDE_NOT_AVAILABLE" => "N",	// Недоступные товары
+    "HIDE_NOT_AVAILABLE_OFFERS" => "N",	// Недоступные торговые предложения
+    "IBLOCK_ID" => "6",	// Инфоблок
+    "IBLOCK_TYPE" => "catalog",	// Тип инфоблока
+    "LABEL_PROP" => "",
+    "LINE_ELEMENT_COUNT" => "3",	// Количество элементов выводимых в одной строке таблицы
+    "MESS_BTN_ADD_TO_BASKET" => "В корзину",
+    "MESS_BTN_BUY" => "Купить",
+    "MESS_BTN_COMPARE" => "Сравнить",
+    "MESS_BTN_DETAIL" => "Подробнее",
+    "MESS_NOT_AVAILABLE" => "Нет в наличии",
+    "OFFERS_LIMIT" => "5",	// Максимальное количество предложений для показа (0 - все)
+    "PARTIAL_PRODUCT_PROPERTIES" => "N",	// Разрешить добавлять в корзину товары, у которых заполнены не все характеристики
+    "PRICE_CODE" => array(	// Тип цены
+        0 => "BASE",
+    ),
+    "PRICE_VAT_INCLUDE" => "Y",	// Включать НДС в цену
+    "PRODUCT_BLOCKS_ORDER" => "price,props,sku,quantityLimit,quantity,buttons",
+    "PRODUCT_ID_VARIABLE" => "id",	// Название переменной, в которой передается код товара для покупки
+    "PRODUCT_PROPS_VARIABLE" => "prop",	// Название переменной, в которой передаются характеристики товара
+    "PRODUCT_QUANTITY_VARIABLE" => "quantity",	// Название переменной, в которой передается количество товара
+    "PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
+    "PRODUCT_SUBSCRIPTION" => "Y",
+    "ROTATE_TIMER" => "30",	// Время показа одного слайда, сек (0 - выключить автоматическую смену слайдов)
+    "SECTION_URL" => "",	// URL, ведущий на страницу с содержимым раздела
+    "SEF_MODE" => "N",	// Включить поддержку ЧПУ
+    "SHOW_CLOSE_POPUP" => "N",
+    "SHOW_DISCOUNT_PERCENT" => "N",
+    "SHOW_MAX_QUANTITY" => "N",
+    "SHOW_OLD_PRICE" => "N",
+    "SHOW_PAGINATION" => "Y",
+    "SHOW_PRICE_COUNT" => "1",	// Выводить цены для количества
+    "SHOW_SLIDER" => "Y",
+    "SLIDER_INTERVAL" => "3000",
+    "SLIDER_PROGRESS" => "N",
+    "TEMPLATE_THEME" => "blue",
+    "USE_ENHANCED_ECOMMERCE" => "N",
+    "USE_PRICE_COUNT" => "N",	// Использовать вывод цен с диапазонами
+    "USE_PRODUCT_QUANTITY" => "N",	// Разрешить указание количества товара
+    "VIEW_MODE" => "SECTION",
+    "COMPONENT_TEMPLATE" => "goods_slider"
+),
+    false
+);?>
