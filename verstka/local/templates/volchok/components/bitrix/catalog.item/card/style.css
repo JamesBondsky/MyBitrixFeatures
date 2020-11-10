@@ -529,7 +529,27 @@
 
 .good_item.hover {
 	height: auto;
+	/*position: relative;*/
+	z-index: 20;
+	background-color: white;
+	max-height: 403px;
+	overflow: visible;
 }
+
+.good_item.hover .good-price {
+	padding-bottom: 10px;
+	padding-top: 20px;
+}
+
+.good_item.hover .good-title {
+	padding-top: 6px;
+}
+
+/*.good_item__wrapper {*/
+/*	position: absolute;*/
+/*!*	width: 270px;*!*/
+/*!*	height: 403px;*!*/
+/*}*/
 
 .product-item-info-container-title { font-size: 12px; }
 

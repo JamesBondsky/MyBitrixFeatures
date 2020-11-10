@@ -15,7 +15,7 @@ use \Bitrix\Main\Localization\Loc;
  */
 
 $this->setFrameMode(true);
-pre($arResult['ITEM'], 1);
+//pre($arResult['ITEM'], 1);
 if (isset($arResult['ITEM'])) {
     $item = $arResult['ITEM'];
     $areaId = $arResult['AREA_ID'];
@@ -96,14 +96,22 @@ if (isset($arResult['ITEM'])) {
     $itemHasDetailUrl = isset($item['DETAIL_PAGE_URL']) && $item['DETAIL_PAGE_URL'] != '';
     ?>
 
+
     <div class="good_item"
          id="<?= $areaId ?>" data-entity="item">
         <div class="good-attributes">
-            <div class="card-hit card-hit-sale">
-                Sale
+            <? if (isset($item['PROPERTIES']['STICKER']) && !empty($item['PROPERTIES']['STICKER']['VALUE'])) { ?>
+                <div class="card-hit card-hit-<?= $item['PROPERTIES']['STICKER']['VALUE_XML_ID'] ?>">
+                    <?= $item['PROPERTIES']['STICKER']['VALUE'] ?>
+                </div>
+            <? } ?>
+            <div class="good-attributes__stickers">
+                <button class="good-attribute favourite" type="button"></button>
+                <? if (!empty($item['PROPERTIES']['STICKERGOOD']['VALUE'])) { ?>
+                    <img class="good-attribute good__favourite"
+                         src="<?= $item['PROPERTIES']['STICKERGOOD']['PICTURE']['PREVIEW_PICTURE']['src'] ?>">
+                <? } ?>
             </div>
-            <button class="good-attribute favourite" type="button"></button>
-            <img class="good-attribute good__favourite" src="<?= SITE_TEMPLATE_PATH ?>/src/снежинка.svg">
         </div>
         <a class="good_fast-view" href="#">
             быстрый просмотр
@@ -175,20 +183,10 @@ if (isset($arResult['ITEM'])) {
             foreach ($arParams['PRODUCT_BLOCKS_ORDER'] as $blockName) {
                 switch ($blockName) {
                     case 'price': ?>
-                        <!--                            <div-->
-                        <!--                                 data-entity="price-block">-->
                         <?
-//                                if ($arParams['SHOW_OLD_PRICE'] === 'Y') {
-//                                    ?>
-                        <!--                                    <span class="product-item-price-old" id="--><?//= $itemIds['PRICE_OLD'] ?><!--"-->
-                        <!--								        --><?//= ($price['RATIO_PRICE'] >= $price['RATIO_BASE_PRICE'] ? 'style="display: none;"' : '') ?>
-                        <!--								        --><?//= $price['PRINT_RATIO_BASE_PRICE'] ?>
-                        <!--							        </span>&nbsp;-->
-                        <!--                                    --><?//
-//                                }
 //                        if ($actualItem['CAN_BUY']) {
-                            ?>
-                            <span class="good-price" id="<?= $itemIds['PRICE'] ?>">
+                        ?>
+                        <span class="good-price" id="<?= $itemIds['PRICE'] ?>">
                                 <?
                                 if (!empty($price)) {
 //                                    if ($arParams['PRODUCT_DISPLAY_MODE'] === 'N' && $haveOffers) {
@@ -206,8 +204,7 @@ if (isset($arResult['ITEM'])) {
                                 }
                                 ?>
 						</span>
-                            <!--                            </div>-->
-                            <?
+                        <?
 //                        }
                         break;
 
@@ -309,21 +306,12 @@ if (isset($arResult['ITEM'])) {
                                             </span>
                                             <a class="good-none-notice" href="#" tabindex="0">Сообщить о поступлении</a>
                                         </div>
-                                        <!--                                        <button class="btn btn-link -->
-                                        <?//= $buttonSizeClass ?><!--"-->
-                                        <!--                                                id="-->
-                                        <?//= $itemIds['NOT_AVAILABLE_MESS'] ?><!--" href="javascript:void(0)"-->
-                                        <!--                                                rel="nofollow">-->
-                                        <!--                                            --><?//= $arParams['MESS_NOT_AVAILABLE'] ?>
-                                        <!--                                        </button>-->
                                     </div>
                                     <?
                                 }
                             } else {
-//                                    if ($arParams['PRODUCT_DISPLAY_MODE'] === 'Y') {
                                 if ($actualItem['CAN_BUY']) {
                                     ?>
-
                                     <div class="good-basket good-basket__link-buy"
                                          id="<?= $itemIds['BASKET_ACTIONS'] ?>">
                                         <?
@@ -343,32 +331,23 @@ if (isset($arResult['ITEM'])) {
                                         //                                            );
                                         //                                        }
                                         ?>
-                                        <!--                                        <button class="btn btn-link -->
-                                        <?//= $buttonSizeClass ?><!--"-->
-                                        <!--                                                id="-->
-                                        <?//= $itemIds['NOT_AVAILABLE_MESS'] ?><!--" href="javascript:void(0)"-->
-                                        <!--                                                rel="nofollow"-->
-                                        <!--                                            --><?//= ($actualItem['CAN_BUY'] ? 'style="display: none;"' : '') ?>
-                                        <!--                                            --><?//= $arParams['MESS_NOT_AVAILABLE'] ?>
-                                        <!--                                        </button>-->
                                         <img src="<? SITE_TEMPLATE_PATH ?>/src/basket-buy.svg"
                                              id="<?= $itemIds['BUY_LINK'] ?>"
                                              href="javascript:void(0)" rel="nofollow"
                                              title="<?= ($arParams['ADD_TO_BASKET_ACTION'] === 'BUY' ? $arParams['MESS_BTN_BUY'] : $arParams['MESS_BTN_ADD_TO_BASKET']) ?>">
-                                        <!--                                            </button>-->
                                     </div>
-                                <? } else pre("test");
-//                                    }
-//                                    else {
-//                                        ?>
-                                <!--                                        <div class="product-item-button-container">-->
-                                <!--                                            <button class="btn btn-primary --><?//= $buttonSizeClass ?><!--"-->
-                                <!--                                                    href="--><?//= $item['DETAIL_PAGE_URL'] ?><!--">-->
-                                <!--                                                --><?//= $arParams['MESS_BTN_DETAIL'] ?>
-                                <!--                                            </button>-->
-                                <!--                                        </div>-->
-                                <!--                                        --><?//
-//                                    }
+                                <? } ?>
+                            <div class="product-item-info-container product-item-hidden"
+                                 data-entity="quantity-block">
+                                <div id="<?= $itemIds['NOT_AVAILABLE_MESS'] ?>"
+                                     class="good-price-none" <?= ($actualItem['CAN_BUY'] ? 'style="display: none;"' : '') ?>>
+                                            <span class="good-none">
+                                                <?= $arParams['MESS_NOT_AVAILABLE'] ?>
+                                            </span>
+                                    <a class="good-none-notice" href="#" tabindex="0">Сообщить о поступлении</a>
+                                </div>
+                            </div>
+                                <?
                             }
                             ?>
                         </div>

@@ -1316,6 +1316,7 @@ section.popular {
 
 .good-picture img {
     max-height: 200px;
+    min-height: 200px;
 }
 
 .good_item .good-title {
@@ -1324,7 +1325,7 @@ section.popular {
     display: flex;
     display: -webkit-box;
     margin-top: auto;
-    padding: 0px 20px;
+    padding: 0px 20px 0;
     text-overflow: ellipsis;
     /* white-space: nowrap; */
     overflow: hidden;
@@ -1338,7 +1339,7 @@ section.popular {
     line-height: 36px;
     font-weight: bold;
     margin-top: auto;
-    padding-bottom: 31px;
+    padding-bottom: 25px;
     color: #48494d;
     padding-top: 20px;
 }

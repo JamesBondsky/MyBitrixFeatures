@@ -28,7 +28,6 @@ $this->setFrameMode(true);
                     </div>
                 <? } ?>
                 <div class="price">
-
                     <?
                     if (isset($arItem['MIN_PRICE']) && !empty($arItem['MIN_PRICE'])) {
                         if ($arItem['MIN_PRICE']["DISCOUNT_VALUE"] < $arItem['MIN_PRICE']["VALUE"]):?>

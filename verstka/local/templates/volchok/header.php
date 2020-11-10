@@ -125,6 +125,7 @@ $mainPage = $curPage == SITE_DIR . "index.php";
                         "bitrix:sale.basket.basket.line",
                         "header_basket",
                         array(
+//                                "AJAX" => "Y",
                             "PATH_TO_BASKET" => SITE_DIR."personal/cart/",
                             "PATH_TO_PERSONAL" => SITE_DIR."personal/",
                             "SHOW_PERSONAL_LINK" => "N",
@@ -132,7 +133,7 @@ $mainPage = $curPage == SITE_DIR . "index.php";
                             "SHOW_TOTAL_PRICE" => "Y",
                             "SHOW_PRODUCTS" => "N",
                             "POSITION_FIXED" =>"N",
-                            "SHOW_AUTHOR" => "Y",
+                            "SHOW_AUTHOR" => "N",
                             "PATH_TO_REGISTER" => SITE_DIR."login/",
                             "PATH_TO_PROFILE" => SITE_DIR."personal/"
                         ),
@@ -166,15 +167,16 @@ $mainPage = $curPage == SITE_DIR . "index.php";
 
 <main class="main <?= $mainPage ? "main_home-page" : "" ?>">
     <? if (!$mainPage) { ?>
-        <ul class="breadcrumbs">
-            <li>
-                <a href="index.html">Главная</a>
-            </li>
-            <li>
-                <a href="catalog.html">Шины</a>
-            </li>
-            <li>
-                Шины зимние
-            </li>
-        </ul>
+        <?$APPLICATION->IncludeComponent(
+            "bitrix:breadcrumb",
+            "crumbs",
+            array(
+                "START_FROM" => "0",
+                "PATH" => "",
+                "SITE_ID" => "1"
+            ),
+            false,
+            Array('HIDE_ICONS' => 'Y')
+        );?>
+        <h1><?$APPLICATION->ShowTitle(false);?></h1>
     <? } ?>
