@@ -297,3 +297,23 @@ function translitXmlForEnumFeature($propertyID)
     $CIBlockProp = new CIBlockProperty;
     $CIBlockProp->UpdateEnum($propertyID, $ar_all_values);
 }
+
+//получаение секции по её коду с доп полями
+function getSectionByCodeWithUFs($ibId, $sectionCode) {
+    $arFilter = array('IBLOCK_ID' => $ibId, "CODE" => $sectionCode, 'CNT_ACTIVE' => true);
+    $rsSect = CIBlockSection::GetList(array("SORT" => "ASC"), $arFilter, true, array('UF_*'));
+    $isUF = false;
+    if ($arSection = $rsSect->GetNext()) {
+        $isUF = true;
+    }
+    return $arSection;
+}
+
+//получение количество элементов в разделе по фильтру
+function getElementsCountInSection($ibId, $sectionId, $filter, $includeSubsection = "Y") {
+    $arSelect = array("ID", "NAME");
+    $arFilter = array("IBLOCK_ID" => $ibId, "SECTION_ID" => $sectionId, "INCLUDE_SUBSECTIONS" => $includeSubsection, "ACTIVE" => "Y");
+
+    $res = CIBlockElement::GetList(array(), array_merge($filter, $arFilter), false, false, $arSelect);
+    return $res -> SelectedRowsCount();
+}

@@ -1,0 +1,101 @@
+.section__title.examples__title {
+    margin-top: 87px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.examples__slide-img {
+    max-height: 540px;
+    border-radius: 4px;
+}
+
+.examples__slide-text {
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+}
+
+.center .examples__slide-text {
+    display: block;
+}
+
+.examples_all-links {
+    position: absolute;
+    left: calc(65%);
+    top: 5px;
+    display: flex;
+    /*line-height: 140%;*/
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.examples-carousel .owl-item .img_zoom-wrapper:hover .img-zoom {
+    display: none;
+}
+
+.examples-carousel .owl-item.center .img_zoom-wrapper:hover .img-zoom {
+    display: block;
+}
+
+.examples-carousel-dots_container-wrapper {
+    position: relative;
+}
+
+.examples-carousel-dots_container {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    line-height: 140%;
+}
+
+.examples-carousel-nav_container span {
+    font-size: 60px;
+    display: block;
+    line-height: 40px;
+    margin-top: -7px;
+    width: 100%;
+    background-image: var(--color-orange-gradient-moz);
+    background-image: var(--color-orange-gradient-webkit);
+    background-image: var(--color-orange-gradient);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@media (max-width: 580px) {
+    .examples_all-links {
+        position: initial;
+        margin-top: 43px;
+        width: 100%;
+        max-width: 320px;
+        border: 1px solid #EF7F1A;
+        border-radius: 4px;
+        padding-top: 11px;
+        padding-bottom: 11px;
+        place-content: center;
+    }
+
+    .examples_all-links .orange-gradient {
+        color: #303030;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 19px;
+    }
+
+    .examples-carousel-dots_container-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .examples_all-links .link-go_arrow {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .section__title.examples__title {
+        text-align: initial;
+    }
+}
