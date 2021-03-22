@@ -22,3 +22,13 @@ require_once(__DIR__ . '/progress/youTubeApiWorking.php');
 
 //require_once(__DIR__ . '/progress/weatherWindow.php');
 
+CModule::AddAutoloadClasses(
+    '', // не указываем имя модуля
+    array(
+        'SiteSettings' => "/local/php_interface/classes/site_settings.php",
+    )
+);
+//редиректы
+if (file_exists($_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/redirects.php")) {
+    include($_SERVER["DOCUMENT_ROOT"] . "/local/php_interface/redirects.php");
+}
