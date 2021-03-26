@@ -93,3 +93,27 @@ if (!function_exists('BITGetDeclNum')) {
         return $status[($value % 100 > 4 && $value % 100 < 20) ? 2 : $array[($value % 10 < 5) ? $value % 10 : 5]];
     }
 }
+
+if (!function_exists('checkFormFieldForAutocomplete')) {
+    /**
+     * Проверяет поля форм на аттрибут autocomplete
+     *
+     * Функция возвращает код для аттрибута autocomplete или false.
+     *
+     * @param string $fieldName - название поля формы
+     * @param string $pattern - в этот параметр запищется маска, которая должна быть указана в аттрибуте pattern у input
+     * @return mixed
+     */
+    function checkFormFieldForAutocomplete($fieldName = '', &$pattern = '') {
+        switch ($fieldName) {
+            case "CLIENT_NAME":
+                $pattern = false;
+                return "name";
+            case "PHONE":
+                $pattern = "\+7 \([0-9]{3}\) [0-9]{3} [0-9]{2}-[0-9]{2}";
+                return "phone";
+            default:
+                return false;
+        }
+    }
+}
