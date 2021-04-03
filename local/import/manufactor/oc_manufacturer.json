@@ -1,0 +1,16 @@
+[
+{"type":"header","version":"4.9.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"p424019_korma"},
+{"type":"table","name":"oc_manufacturer","database":"p424019_korma","data":
+[
+{"manufacturer_id":"12","name":"Mealberry","image":"data\/mealberry\/logo_.jpg","sort_order":"0"},
+{"manufacturer_id":"13","name":"Велкорм","image":"data\/wellkorm\/logo (1).png","sort_order":"0"},
+{"manufacturer_id":"14","name":"КЛАМПИ","image":"data\/demo\/kogtetochki\/logo.png","sort_order":"0"},
+{"manufacturer_id":"11","name":"ROYAL CANIN","image":"data\/icon4.jpg","sort_order":"0"},
+{"manufacturer_id":"15","name":" ООО &quot;Лидинг&quot;","image":"data\/liding\/logo.png","sort_order":"0"},
+{"manufacturer_id":"16","name":"ЗАО НПФ ЭКОПРОМ","image":"data\/ecoprom\/ecoprom.png","sort_order":"0"},
+{"manufacturer_id":"17","name":"ООО &quot;НПО Новые Технологии&quot;","image":"data\/liding\/img3762_12247.jpg","sort_order":"0"},
+{"manufacturer_id":"18","name":"Bosch","image":"data\/images (2).jpg","sort_order":"0"}
+]
+}
+]
