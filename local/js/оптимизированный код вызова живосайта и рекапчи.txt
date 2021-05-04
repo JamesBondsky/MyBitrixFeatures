@@ -44,3 +44,42 @@
     })();
 </script>
 <!-- {/literal} END JIVOSITE CODE -->
+
+/*reCaptchas resize after loading page*/
+BX.ready(function () {
+    resizeCaptchas();
+});
+
+var resizeCaptchas = function () {
+     setTimeout(() => {
+    var captchasAr = document.querySelectorAll(".g-recaptcha");
+    captchasAr.forEach(function (captcha) {
+        var reCaptchaWidth = 304;
+        var containerWidth = captcha.parentNode.offsetWidth;
+        if (reCaptchaWidth > containerWidth && containerWidth > 0) {
+            captcha.parentNode.style.transform = 'scale(' + (containerWidth / reCaptchaWidth) + ')';
+            captcha.parentNode.style.transformOrigin = 'left top';
+            captcha.parentNode.style.width = (reCaptchaWidth / containerWidth) * 100 + '%';
+        }
+    });
+ }, 3000);
+};
+
+/*после закрытия fancybox могут пропасть рекапчи, чтобы их обновить вызывается заново api скрипт*/
+$.extend($.fancybox.defaults, {
+    beforeClose: function(){
+        let recaptchaJS = document.getElementById('recaptchaJS');
+        if (recaptchaJS != null)
+            recaptchaJS.remove();
+        console.log('captcha reload after fancybox');
+        //вызов reCaptcha
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://www.google.com/recaptcha/api.js?hl=ru';
+        script.id = 'recaptchaJS';
+        head.appendChild(script);
+
+        resizeCaptchas();
+    }
+});
