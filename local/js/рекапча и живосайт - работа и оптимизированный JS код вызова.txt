@@ -83,3 +83,62 @@ $.extend($.fancybox.defaults, {
         resizeCaptchas();
     }
 });
+
+/*также капча может пропадать при переходе по ссылкам-якорям, поэтому данный скрипт вместо непосредственно перехода
+* добавляет плавную прокрутку без изменения ссылки*/
+var $page = $('html, body');
+$('a[href*="#"]').click(function() {
+    $page.animate({
+        scrollTop: $($.attr(this, 'href')).offset().top
+    }, 200);
+    return false;
+});
+
+
+
+внутри template.php у форм:
+<div class="form-item captcha">
+      <div class="g-recaptcha" id="g-recaptcha-<?= $arResult["arForm"]["SID"] ?>" data-sitekey="<?=reCaptcha_SITE_KEY?>"></div>
+</div>
+
+/*данный вызов нужен, чтобы капча перерисовывалась после неудачного заполнения формы*/
+<? if ($arResult["isFormErrors"] == "Y") { ?>
+            <script type="text/javascript">
+                // BX.ready(function () {
+                try {
+                    grecaptcha.render('g-recaptcha-<?= $arResult["arForm"]["SID"] ?>', {
+                        'sitekey': '<?=reCaptcha_SITE_KEY?>'
+                    });
+                } catch (e) { }
+                // });
+            </script>
+        <? } ?>
+
+
+
+init.php:
+
+/*проверка капчи*/
+define('reCaptcha_SITE_KEY', 'PUBLIC_KET_HERE'); /*затем можно использовать в комопнентах как константу*/
+
+AddEventHandler('form', 'onBeforeResultAdd', 'my_onBeforeResultAdd');
+function my_onBeforeResultAdd($WEB_FORM_ID, &$arFields, &$arrVALUES)
+{
+    global $APPLICATION;
+
+    if ($_REQUEST['g-recaptcha-response']) {
+        //ulogging($_REQUEST['g-recaptcha-response']);
+        $secret = "SECRET_KER_HERE";
+        $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".$secret."&response=".$_REQUEST['g-recaptcha-response']);
+        $response = json_decode($response, true); // if you add "true" then the response will be an array
+
+        if($response["success"] === true){
+            echo "Form Submit Successfully.";
+        }else{
+            $APPLICATION->ThrowException('Вы не прошли проверку');
+        }
+    } else {
+        $APPLICATION->ThrowException('Вы не прошли проверку');
+        return false;
+    }
+}
