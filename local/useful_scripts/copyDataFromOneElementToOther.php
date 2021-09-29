@@ -338,33 +338,37 @@ class Offer extends Entity
 ?>
 <script>
     //функция копирования данных ТП в ТП этого же цвета других размеров
-    function copyDataToOffersOfThisProductWithThisColor(element_id) {
-        if(confirm('Скопировать данные в ТП данного товара других размеров этого цвета?')) {
-            console.log('test');
-            console.log(element_id);
-            $.ajax({
-                type: 'GET',
-                url: '/ajax/iblock/copy_data_to_offers_with_this_color/',
-                async: false,
-                dataType: 'json',
-                data: {
+    function copyDataToOffersOfThisProductWithSameColor(element_id) {
+        // if(confirm('Скопировать данные в ТП данного товара других размеров этого цвета?')) {
+        //     console.log(element_id);
+        $.ajax({
+            type: 'GET',
+            url: '/ajax/iblock/copy_data_to_offers_with_same_color/',
+            async: false,
+            dataType: 'json',
+            data: {
                 element_id: element_id
-                },
-                success: function (response) {
+            },
+            success: function (response) {
+                let elem = $('#copy-data-but').context.activeElement;
+                elem.style.setProperty("background-image", "none", "important");
                 if (response.is_copied) {
-                    console.log('copied');
-                    alert('Данные скопированы.');
+                    elem.style.setProperty("background-color", "darkseagreen", "important");
+                    elem.textContent = "Данные скопированы";
+                    // alert('Данные скопированы.');
                 } else {
-                    console.log('failed');
-                    alert('При копирование произошла ошибка.');
+                    elem.style.setProperty("background-color", "darksalmon", "important");
+                    elem.textContent = "Ошибка при копировании";
+                    // alert('При копирование произошла ошибка.');
                 }
             }
-            });
-        }
+        });
+        // }
     }
 </script>
 
 <?
+//событие и JS выше используются для добавления кнопки на странице редактирования ТП для копирования данных
 AddEventHandler('main', 'OnAdminContextMenuShow', 'IBlockOfferAddCopyButtonHandler');
 function IBlockOfferAddCopyButtonHandler(&$items){
     if ($_SERVER['REQUEST_METHOD']=='GET' &&
@@ -374,12 +378,13 @@ function IBlockOfferAddCopyButtonHandler(&$items){
     {
         $items[] = array(
             "TEXT"=>"Скопировать данные в ТП других размеров",
-            "LINK"=>"javascript:copyDataToOffersOfThisProductWithThisColor(".$_REQUEST['ID'].")",
+            "LINK"=>"javascript:copyDataToOffersOfThisProductWithSameColor(".$_REQUEST['ID'].")",
             "TITLE"=>"Скопировать данные в ТП других размеров",
-            "ICON"=>"adm-btn",
+            "ICON"=>"adm-btn copy-data-but"
         );
     }
 }
+//
 
 event_manager()->addEventHandler('extensions', Ajax\Distributor::EXPAND_HANDLERS_EVENT, function () {
     return new EventResult(EventResult::SUCCESS, [
